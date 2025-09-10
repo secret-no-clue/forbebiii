@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Memories</title>
+  <style>
+    :root {
+      --primary: #ffffff;     
+      --bg-color: #69359c;    
+      --card-bg: #caa0f4;     
+      --shadow-color: rgba(0, 0, 0, 0.2);
+      --heart-color: #8e44ad;     
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      background: linear-gradient(135deg, var(--bg-color), #9b59b6); 
+      color: var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px 10px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    header p {
+      font-size: 1rem;
+      opacity: 0.95;
+      color: var(--card-bg);
+    }
+
+    .gallery {
+      width: 90%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 30px 0 50px;
+    }
+
+    .gallery-item {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px var(--shadow-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .texxxt {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-shadow: 8px 8px 8px rgba(0,0,0,0.3);
+      margin: 2px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Our Memories 🤍</h1>
+    <p>A little gallery of us <br> Every moment is special.</p>
+  </header>
+
+  <div class="gallery">
+    <div class="gallery-item"><img src="images/us1.jpg" alt="us🤍"></div>
+    <div class="gallery-item"><img src="images/us2.jpg" alt="us🤍"></div>
+    <div class="gallery-item"><img src="images/us3.jpg" alt="us🤍"></div>
+    <div class="gallery-item"><img src="images/us4.jpg" alt="us🤍"></div>
+    <div class="gallery-item"><img src="images/us5.jpeg" alt="us🤍"></div>
+    <div class="gallery-item"><img src="images/us6.jpeg" alt="us🤍"></div>
+    <div class="gallery-item"><img src="images/us7.jpg" alt="us🤍"></div>
+    <div class="gallery-item"><img src="images/us8.jpg" alt="us🤍"></div>
+    <div class="gallery-item"><img src="images/us9.jpg" alt="us🤍"></div>
+    <div class="gallery-item"><img src="images/us10.jpeg" alt="us🤍"></div>
+  </div>
+
+  <div class="texxxt">I LOVE YOU 🤍</div>
+
+
+  <div class="modal" id="imageModal">
+    <span class="close" id="closeBtn">&times;</span>
+    <img id="modalImg" src="" alt="Expanded view">
+  </div>
+
+  <script>
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const closeBtn = document.getElementById('closeBtn');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
